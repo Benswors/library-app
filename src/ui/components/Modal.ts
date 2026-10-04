@@ -27,7 +27,6 @@ function show<T>(
     b.append(body);
     const f = el('div', 'modal-footer');
     let value = dismiss;
-    const modal = new BsModal(root);
     btns.forEach((x) => {
       const btn = el('button', `btn ${x.cls}`, x.label);
       btn.onclick = () => {
@@ -40,6 +39,7 @@ function show<T>(
     dialog.append(content);
     root.append(dialog);
     document.body.append(root);
+    const modal = new BsModal(root);
     root.addEventListener('hidden.bs.modal', () => {
       root.remove();
       resolve(value);
