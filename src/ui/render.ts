@@ -25,8 +25,14 @@ export function mount(root: HTMLElement, svc: LibraryService): void {
           i?.focus();
           i?.setSelectionRange(q.length, q.length);
         },
-        onPage: (p) => { state.bookPage = p; draw(); },
-        onDelete: (b) => { svc.removeBook(b.id); draw(); },
+        onPage: (p) => {
+          state.bookPage = p;
+          draw();
+        },
+        onDelete: (b) => {
+          svc.removeBook(b.id);
+          draw();
+        },
         onReturn: (b) => {
           svc.giveBack(b.id);
           draw();
@@ -40,16 +46,26 @@ export function mount(root: HTMLElement, svc: LibraryService): void {
           try {
             const { user } = svc.borrow(b.id, id.trim());
             draw();
-            notifications.notify(`${b.toString()} has been borrowed by ${user.toString()}.`);
+            notifications.notify(
+              `${b.toString()} has been borrowed by ${user.toString()}.`,
+            );
           } catch (e) {
             notifications.notify((e as Error).message);
           }
         },
       }),
-      UserList(svc.users.getAll(), state.userPage, (p) => { state.userPage = p; draw(); }, (u) => {
-        svc.removeUser(u.id);
-        draw();
-      }),
+      UserList(
+        svc.users.getAll(),
+        state.userPage,
+        (p) => {
+          state.userPage = p;
+          draw();
+        },
+        (u) => {
+          svc.removeUser(u.id);
+          draw();
+        },
+      ),
     );
   };
 
@@ -57,8 +73,14 @@ export function mount(root: HTMLElement, svc: LibraryService): void {
   wrap.style.maxWidth = '960px';
   wrap.append(
     el('h2', 'text-center mb-4', 'Система Управління Бібліотекою'),
-    BookForm((t, a, y) => { svc.addBook(t, a, y); draw(); }),
-    UserForm((n, e) => { svc.addUser(n, e); draw(); }),
+    BookForm((t, a, y) => {
+      svc.addBook(t, a, y);
+      draw();
+    }),
+    UserForm((n, e) => {
+      svc.addUser(n, e);
+      draw();
+    }),
     lists,
   );
   root.append(wrap);

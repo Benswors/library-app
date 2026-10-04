@@ -16,7 +16,10 @@ export function ListCard<T>(
   const ul = el('ul', 'list-group list-group-flush');
   const p = paginate(items, page);
   p.items.forEach((i) => {
-    const li = el('li', 'list-group-item d-flex justify-content-between align-items-center');
+    const li = el(
+      'li',
+      'list-group-item d-flex justify-content-between align-items-center',
+    );
     li.append(row(i));
     ul.append(li);
   });

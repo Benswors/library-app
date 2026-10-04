@@ -18,8 +18,14 @@ export class LibraryService {
   }
 
   private persist(): void {
-    this.store.save('books', this.books.getAll().map((b) => b.toJSON()));
-    this.store.save('users', this.users.getAll().map((u) => u.toJSON()));
+    this.store.save(
+      'books',
+      this.books.getAll().map((b) => b.toJSON()),
+    );
+    this.store.save(
+      'users',
+      this.users.getAll().map((u) => u.toJSON()),
+    );
   }
 
   addBook(title: string, author: string, year: number): void {
@@ -32,7 +38,10 @@ export class LibraryService {
     this.persist();
   }
 
-  removeBook(id: string): void { this.books.remove(id); this.persist(); }
+  removeBook(id: string): void {
+    this.books.remove(id);
+    this.persist();
+  }
 
   removeUser(id: string): void {
     this.books.find((b) => b.borrowedBy === id).forEach((b) => b.giveBack());

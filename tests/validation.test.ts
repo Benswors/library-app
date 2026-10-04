@@ -23,7 +23,9 @@ describe('Validation', () => {
     expect(e).to.have.keys('title', 'year');
   });
   it('validateBook без помилок', () => {
-    expect(Validation.validateBook({ title: 'T', author: 'A', year: '2004' })).to.deep.equal({});
+    expect(
+      Validation.validateBook({ title: 'T', author: 'A', year: '2004' }),
+    ).to.deep.equal({});
   });
   it('validateUser', () => {
     expect(Validation.validateUser({ name: 'A', email: 'bad' })).to.have.key('email');

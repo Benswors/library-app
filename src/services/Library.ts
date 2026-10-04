@@ -20,6 +20,10 @@ export class Library<T extends { id: string }> {
     return this.items.filter(predicate);
   }
 
-  getAll(): T[] { return [...this.items]; }
-  setAll(items: T[]): void { this.items = [...items]; }
+  getAll(): T[] {
+    return [...this.items];
+  }
+  setAll(items: T[]): void {
+    this.items = [...items];
+  }
 }

@@ -17,7 +17,8 @@ describe('Library<T>', () => {
     expect(lib.remove('1')).to.equal(true);
     expect(lib.getAll()).to.have.length(0);
   });
-  it('повертає false при видаленні неіснуючого', () => expect(lib.remove('9')).to.equal(false));
+  it('повертає false при видаленні неіснуючого', () =>
+    expect(lib.remove('9')).to.equal(false));
   it('шукає за предикатом', () => {
     expect(lib.find((b) => b.author.includes('Martin'))).to.have.length(1);
     expect(lib.find((b) => b.title === 'Nope')).to.have.length(0);

@@ -1,7 +1,9 @@
 import { Validation } from '../../utils/validators';
 import { buildForm } from './Form';
 
-export function BookForm(onAdd: (title: string, author: string, year: number) => void): HTMLElement {
+export function BookForm(
+  onAdd: (title: string, author: string, year: number) => void,
+): HTMLElement {
   return buildForm(
     'Додати Книгу',
     [
@@ -11,7 +13,11 @@ export function BookForm(onAdd: (title: string, author: string, year: number) =>
     ],
     'Додати Книгу',
     (v) => {
-      const errors = Validation.validateBook({ title: v.title, author: v.author, year: v.year });
+      const errors = Validation.validateBook({
+        title: v.title,
+        author: v.author,
+        year: v.year,
+      });
       if (Object.keys(errors).length === 0) onAdd(v.title, v.author, Number(v.year));
       return errors;
     },

@@ -3,6 +3,6 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
-  "rules": { "@typescript-eslint/no-namespace": "off" },  "env": { "browser": true, "node": true, "es2020": true, "mocha": true }
+  "rules": { "@typescript-eslint/no-namespace": "off" },
+  "env": { "browser": true, "node": true, "es2020": true, "mocha": true }
 }
-

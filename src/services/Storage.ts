@@ -5,8 +5,16 @@ export class Storage {
   load<T>(key: string, fallback: T): T {
     const raw = localStorage.getItem(key);
     if (raw === null) return fallback;
-    try { return JSON.parse(raw) as T; } catch { return fallback; }
+    try {
+      return JSON.parse(raw) as T;
+    } catch {
+      return fallback;
+    }
   }
-  remove(key: string): void { localStorage.removeItem(key); }
-  clear(): void { localStorage.clear(); }
+  remove(key: string): void {
+    localStorage.removeItem(key);
+  }
+  clear(): void {
+    localStorage.clear();
+  }
 }

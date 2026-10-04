@@ -16,7 +16,11 @@ export namespace Validation {
     return isUserId(id.trim()) ? null : 'ID має містити лише цифри';
   }
 
-  export function validateBook(d: { title: string; author: string; year: string }): Errors {
+  export function validateBook(d: {
+    title: string;
+    author: string;
+    year: string;
+  }): Errors {
     const e: Errors = {};
     if (!isRequired(d.title)) e.title = REQUIRED;
     if (!isRequired(d.author)) e.author = REQUIRED;
