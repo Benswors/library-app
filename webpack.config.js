@@ -3,7 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
-  output: { filename: 'bundle.[contenthash].js', path: path.resolve(__dirname, 'dist'), clean: true },
+  output: {
+    filename: 'bundle.[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
   resolve: { extensions: ['.ts', '.js'] },
   module: {
     rules: [
@@ -11,6 +15,8 @@ module.exports = {
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: './index.html', favicon: './public/favicon.ico' })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: './index.html', favicon: './public/favicon.ico' }),
+  ],
   devServer: { port: 9000, hot: true, static: './public' },
 };

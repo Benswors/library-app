@@ -1,7 +1,10 @@
 import { Errors } from '../../types';
 import { el } from '../dom';
 
-export interface Field { name: string; placeholder: string }
+export interface Field {
+  name: string;
+  placeholder: string;
+}
 
 export function buildForm(
   title: string,
@@ -31,7 +34,8 @@ export function buildForm(
       msgs[f.name].textContent = errors[f.name] ?? '';
       inputs[f.name].classList.toggle('is-invalid', !!errors[f.name]);
     });
-    if (Object.keys(errors).length === 0) fields.forEach((f) => (inputs[f.name].value = ''));
+    if (Object.keys(errors).length === 0)
+      fields.forEach((f) => (inputs[f.name].value = ''));
   };
   body.append(btn);
   card.append(body);

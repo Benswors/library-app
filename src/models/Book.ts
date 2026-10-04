@@ -9,26 +9,52 @@ export class Book implements IBook {
     private _borrowedBy: string | null = null,
   ) {}
 
-  get id(): string { return this._id; }
-  get title(): string { return this._title; }
-  set title(v: string) { this._title = v; }
-  get author(): string { return this._author; }
-  set author(v: string) { this._author = v; }
-  get year(): number { return this._year; }
-  get borrowedBy(): string | null { return this._borrowedBy; }
-  get isBorrowed(): boolean { return this._borrowedBy !== null; }
+  get id(): string {
+    return this._id;
+  }
+  get title(): string {
+    return this._title;
+  }
+  set title(v: string) {
+    this._title = v;
+  }
+  get author(): string {
+    return this._author;
+  }
+  set author(v: string) {
+    this._author = v;
+  }
+  get year(): number {
+    return this._year;
+  }
+  get borrowedBy(): string | null {
+    return this._borrowedBy;
+  }
+  get isBorrowed(): boolean {
+    return this._borrowedBy !== null;
+  }
 
   borrow(userId: string): void {
     if (this.isBorrowed) throw new Error('Книгу вже позичено.');
     this._borrowedBy = userId;
   }
 
-  giveBack(): void { this._borrowedBy = null; }
+  giveBack(): void {
+    this._borrowedBy = null;
+  }
 
-  toString(): string { return `${this._title} by ${this._author} (${this._year})`; }
+  toString(): string {
+    return `${this._title} by ${this._author} (${this._year})`;
+  }
 
   toJSON(): IBook {
-    return { id: this._id, title: this._title, author: this._author, year: this._year, borrowedBy: this._borrowedBy };
+    return {
+      id: this._id,
+      title: this._title,
+      author: this._author,
+      year: this._year,
+      borrowedBy: this._borrowedBy,
+    };
   }
 
   static fromJSON(d: IBook): Book {
